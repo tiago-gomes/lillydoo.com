@@ -1,7 +1,3 @@
 controllers:
     resource: ../../src/Domain/Controller/
     type: annotation
-    prefix:
-        /api/
-    defaults:
-        _format: json

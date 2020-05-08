@@ -1,34 +1,20 @@
 framework:
+    validation: { enable_annotations: true }
     form: false
     secret: '%env(APP_SECRET)%'
     default_locale: en
     csrf_protection: false
     http_method_override: false
-    request:
-        formats:
-            json: 'application/json'
 
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
     # Remove or comment this section to explicitly disable session support.
-    # session:
-        #handler_id: ~
+    session:
+        handler_id: ~
 
     # esi: true
     # fragments: true
     php_errors:
         log: true
-
-    cache:
-        app: cache.adapter.redis
-        default_redis_provider: "redis://%env(REDIS_HOST)%:%env(REDIS_PORT)%"
-        pools:
-            name:
-                adapter:              cache.app
-                public:               true
-            doctrine.result_cache_pool:
-                adapter: cache.app
-            doctrine.system_cache_pool:
-                adapter: cache.system
 
     #templating:
         #engines: ['twig']

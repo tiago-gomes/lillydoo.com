@@ -6,6 +6,7 @@ use App\Core\Traits\TimeRecordsTrait;
 use Doctrine\ORM\Mapping AS ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -24,51 +25,61 @@ class Address
     
     /**
      * @ORM\Column(type="string", nullable=true, length=35)
+     * @Assert\NotBlank
      */
     protected $firstName;
 
     /**
      * @ORM\Column(type="string", nullable=true, length=35)
+     * @Assert\NotBlank
      */
     protected $lastName;
 
     /**
      * @ORM\Column(type="string", unique=true, length=75)
+     * @Assert\NotBlank
      */
     protected $email;
 
     /**
      * @ORM\Column(name="birthday", type="date", nullable=true)
+     * @Assert\NotBlank
      */
     private $birthday;
     
     /**
-     * @ORM\Column(type="string", unique=true, length=75)
+     * @ORM\Column(type="string", unique=true, length=125125)
+     * @Assert\NotBlank
      */
     protected $street_address;
     
     /**
-     * @ORM\Column(type="string", unique=true, length=7)
+     * @ORM\Column(type="string", unique=true, length=15)
+     * @Assert\NotBlank
      */
     protected $zip;
     
     /**
      * @ORM\Column(type="string", unique=true, length=75)
+     * @Assert\NotBlank
      */
     protected $city;
     
     /**
- * @ORM\Column(type="string", unique=true, length=75)
- */
+    * @ORM\Column(type="string", unique=true, length=75)
+    * @Assert\NotBlank
+    */
     protected $country;
     
     /**
     * @ORM\Column(type="string", unique=true, length=35)
+     * @Assert\NotBlank
     */
     protected $phone;
     
     /**
      * @ORM\Column(type="string", unique=true, length=75)
+     * @Assert\NotBlank
      */
     protected $picture;
     
@@ -81,6 +92,7 @@ class Address
      */
     public function populate(array $array): ?self
     {
+
         if (!empty($array['id']) ) {
             $this->setId($array['id']);
         }
@@ -102,7 +114,7 @@ class Address
         }
     
         if (!empty($array['street_address'])) {
-            $this->setCity($array['street_address']);
+            $this->setStreetAddress($array['street_address']);
         }
         
         if (!empty($array['city'])) {
@@ -110,19 +122,19 @@ class Address
         }
     
         if (!empty($array['zip'])) {
-            $this->setCity($array['zip']);
+            $this->setZip($array['zip']);
         }
     
         if (!empty($array['phone'])) {
-            $this->setCity($array['phone']);
+            $this->setPhone($array['phone']);
         }
     
         if (!empty($array['country'])) {
-            $this->setCity($array['country']);
+            $this->setCountry($array['country']);
         }
     
         if (!empty($array['picture'])) {
-            $this->setCity($array['picture']);
+            $this->setPicture($array['picture']);
         }
         
         return $this;
@@ -208,22 +220,23 @@ class Address
         $this->email = $email;
         return $this;
     }
-
+    
     /**
-     * @return \DateTime|null
+     * @return null|string
      */
     public function getBirthday(): ?\DateTime
     {
         return $this->birthday;
     }
-
+    
     /**
-     * @param \DateTime|null $birthday
+     * @param null $birthday
      * @return Address|null
      */
-    public function setBirthday(\DateTime $birthday = null): ?self
+    public function setBirthday($birthday = null): ?self
     {
-        $this->birthday = $birthday ? clone $birthday : null;
+        $date = new \DateTime($birthday);
+        $this->birthday = $date;
         return $this;
     }
     
@@ -345,6 +358,7 @@ class Address
             'id'        => $this->getId(),
             'firstName' => $this->getFirstName(),
             'lastName'  => $this->getLastName(),
+            'birthday'  => $this->getBirthday()->format('Y-m-d'),
             'streetAddress'  => $this->getStreetAddress(),
             'zip'  => $this->getZip(),
             'city'  => $this->getCity(),

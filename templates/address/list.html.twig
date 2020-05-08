@@ -1,16 +1,41 @@
-<h1>Hi {{ data.firstName }} {{ data.lastName }}</h1>
-<h3>
-   We have succefully changed your account credentials;
-</h3>
-<ul>
-    <li>Email: {{ data.email }}</li>
-    <li>Password: {{ newPassword }}</li>
-</ul>
-<p>
-    To login, go to:
-</p>
-<p>
-    Thanks!
-</p>
+{% extends 'base.html.twig' %}
 
-
+{% block content %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h2>Available Address</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Address</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in address %}
+                <tr>
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>
+                        <p>{{ item.street_address }}</p>
+                        <p>{{ item.zip }}</p>
+                        <p>{{ item.city }}</p>
+                        <p>{{ item.country }}</p>
+                    </td>
+                    <td>
+                        <p><a href="/address/view/{{ item.id }}">Edit</a></p>
+                        <p><a href="/address/delete/{{ item.id }}">Delete</a></p>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <a class="btn btn-primary" href="/address/add">Create new address</a>
+{% endblock %}

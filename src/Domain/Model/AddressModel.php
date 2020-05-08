@@ -7,11 +7,7 @@ use App\Domain\Entity\Address;
 use App\Domain\Model\Repository\Contract\AddressRepositoryInterface;
 use App\Domain\AbstractDomain;
 
-
 /**
- *
-
- *
  * Class AddressModel
  * @package App\Domain\Model
  */
@@ -103,7 +99,6 @@ class AddressModel extends AbstractDomain
     {
         try{
             $address = $this->container->get(AddressRepositoryInterface::class)->getById($id);
-            $address->setDeletedAt(date('Y-m-d G:i:s'));
             return $this->container->get(AddressRepositoryInterface::class)->remove($address);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());

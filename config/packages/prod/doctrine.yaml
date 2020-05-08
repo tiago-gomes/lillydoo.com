@@ -5,7 +5,7 @@ doctrine:
       prod:
         driver: 'pdo_sqlite'
         memory: false
-          path: '/code/docker/sqlite/lillodoo3'
+          path: '/code/docker/sqlite/lyllodoo'
         user: '%env(DB_TEST_USERNAME)%'
         password: '%env(DB_TEST_PASSWORD)%'
 

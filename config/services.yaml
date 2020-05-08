@@ -19,11 +19,6 @@ services:
         tags: ['controller.service_arguments']
 
     # Repositories Services
-    App\Domain\Model\Repository\Contract\AccountRepositoryInterface:
+    App\Domain\Model\Repository\Contract\AddressRepositoryInterface:
         public: true
-        factory: ['App\Domain\Model\Repository\Factory\AccountRepositoryFactory', service]
-
-    # Exceptions
-    App\Core\Exceptions\JsonException:
-        tags:
-        - { name: kernel.event_listener, event: kernel.exception }
+        factory: ['App\Domain\Model\Repository\Factory\AddressRepositoryFactory', service]

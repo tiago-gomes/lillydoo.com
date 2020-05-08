@@ -269,6 +269,9 @@
     "swiftmailer/swiftmailer": {
         "version": "v6.1.2"
     },
+    "symfony/asset": {
+        "version": "v4.1.12"
+    },
     "symfony/browser-kit": {
         "version": "v4.1.4"
     },
@@ -389,6 +392,9 @@
     "symfony/serializer": {
         "version": "v4.1.7"
     },
+    "symfony/service-contracts": {
+        "version": "v2.0.1"
+    },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
         "recipe": {
@@ -422,11 +428,32 @@
             "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
         }
     },
+    "symfony/validator": {
+        "version": "4.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.1",
+            "ref": "21ab70175caf1e4b273791364fb30d27f1153546"
+        }
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.6",
+            "ref": "69e1d805ad95964088bd510c05995e87dc391564"
+        }
+    },
     "symfony/yaml": {
         "version": "v4.1.4"
     },
     "theseer/tokenizer": {
         "version": "1.1.0"
+    },
+    "twbs/bootstrap": {
+        "version": "v4.3.1"
     },
     "twig/twig": {
         "version": "v2.5.0"

@@ -33,73 +33,76 @@ class AddressController extends Controller
      * @return JsonResponse
      * @throws \Exception
      */
-    public function index() {
+    public function searchView() {
         $address = $this->addressModel->getAllAddresss();
-        return new JsonResponse([
-            'code' => 200,
-            'data' => $address
-        ]);
+        return $this->render('address/list.html.twig', array(
+          'address' => $address
+        ));
+    }
+    
+    /**
+     * @Route("/address/add", methods={"GET"})
+     * @throws \Exception
+     */
+    public function addView() {
+        return $this->render('address/add.html.twig');
     }
 
     /**
      * Show address details by ID
      *
-     * @Route("/address/{id}", requirements={"id"="\d+"}, name="getAddressById", methods={"GET"})
-     * @param \Symfony\Bundle\FrameworkBundle\Controller\string $id
-     * @return object|JsonResponse
+     * @Route("/address/view/{id}", requirements={"id"="\d+"}, name="getAddressById", methods={"GET"})
+     * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function getById($id) {
+    public function editView($id) {
         $address = $this->addressModel->getAddressById($id);
-        return new JsonResponse([
-            'code' => 200,
-            'data' => $address->toArray()
-        ]);
-    }
-
-    /**
-     * @Route("/address", requirements={"id"="\d+"}, name="addAddress", methods={"POST"})
-     * @param Request $request
-     * @return JsonResponse
-     * @throws \Throwable
-     */
-    public function post(Request $request) {
-        $address = $this->addressModel->addAddress($request->request->all());
-        return new JsonResponse([
-            'code' => 200,
-            'data' => $address->toArray()
-        ]);
-    }
-
-    /**
-     * Update an existing address
-     *
-     * @Route("/address/{id}", requirements={"id"="\d+"}, name="updateAddress", methods={"PATCH"})
-     * @param $id
-     * @param Request $request
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    public function patch($id, Request $request) {
-        $address = $this->addressModel->updateAddress($id, $request->query->all());
-        return $this->render('worker/dashboard.html.twig', array(
+        if (empty($address)) {
+            throw new \Exception('Address ID does not exist!!!', 412);
+        }
+        return $this->render('address/edit.html.twig', array(
           'address' => $address->toArray()
         ));
     }
 
     /**
-     * Remove an existing address
-     *
-     * @Route("/address/{id}", requirements={"id"="\d+"}, name="removeAddress", methods={"DELETE"})
-     * @param $id
-     * @return JsonResponse
+     * @Route("/address/create", requirements={"id"="\d+"}, name="addAddress", methods={"POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Exception
      */
-    public function delete($id) {
+    public function addAction(Request $request) {
+        $address = $this->addressModel->addAddress($request->request->all());
+        $this->addFlash('success', 'Address as been created!!!');
+        return $this->redirect('/address', 302);
+    }
+
+    /**
+     * Update an existing address
+     *
+     * @Route("/address/update/{id}", requirements={"id"="\d+"}, name="updateAddress", methods={"POST"})
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Exception
+     */
+    public function updateAction($id, Request $request) {
+        $address = $this->addressModel->updateAddress($id, $request->request->all());
+        $this->addFlash('success', 'Address as been updated!!!');
+        return $this->redirect('/address/view/'. $address->getId(), 302);
+    }
+
+    /**
+     * Remove an existing address
+     *
+     * @Route("/address/delete/{id}", requirements={"id"="\d+"}, name="removeAddress", methods={"GET"})
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Exception
+     */
+    public function deleteAction($id) {
         $this->addressModel->removeAddress($id);
-        return new JsonResponse([
-            'code' => 200,
-            'message' => 'Address was successfully removed.'
-        ]);
+        $this->addFlash('success', 'Address as been deleted!!!');
+        return $this->redirect('/address', 302);
     }
 }
