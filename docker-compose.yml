@@ -1,0 +1,42 @@
+web:
+  hostname: nginx
+  domainname: lillydoo.com
+  env_file:
+    - .env
+  build: ./docker/web
+  container_name: "lillo_web"
+  ports:
+    - "8080:80"
+  volumes:
+    - ./:/code
+    - ./docker/web/api.conf:/etc/nginx/conf.d/api.conf
+    - ./docker/log/nginx:/var/log/nginx
+  restart: always
+  links:
+    - app
+    - sqlite
+app:
+  env_file:
+    - .env
+  build: ./docker/app
+  container_name: "lillo_app"
+  environment:
+    PHP_IDE_CONFIG: "serverName=API Server"
+  volumes:
+    - ./:/code
+  links:
+    - sqlite
+  ports:
+    - "1337:1337"
+  restart: always
+composer:
+  build: ./docker/composer
+  container_name: "lillo_composer"
+  volumes_from:
+  - app
+sqlite:
+  image: nouchka/sqlite3:latest
+  stdin_open: true
+  tty: true
+  volumes:
+  - ./docker/sqlite/:/root/db/

@@ -1,0 +1,14 @@
+swiftmailer:
+    transport: smtp
+    username: '%env(SMTP_USERNAME)%'
+    password: '%env(SMTP_PASSWORD)%'
+    host: '%env(SMTP_HOST)%'
+    port: '%env(SMTP_PORT)%'
+    timeout: 30
+    encryption: '%env(SMTP_ENCRYPTION)%'
+    auth_mode: '%env(SMTP_AUTH_MODE)%'
+    stream_options:
+      ssl:
+        verify_peer: false
+        verify_peer_name: false
+        allow_self_signed: true

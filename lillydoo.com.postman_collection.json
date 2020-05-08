@@ -1,0 +1,118 @@
+{
+	"variables": [],
+	"info": {
+		"name": "lillydoo.com",
+		"_postman_id": "43cdff6b-9b15-def3-066a-1e99f211ac96",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get Account list",
+			"request": {
+				"url": "http://rest.lillydoo.com:8080/api/account",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get Account By Id",
+			"request": {
+				"url": "http://rest.lillydoo.com:8080/api/account",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete Account By Id",
+			"request": {
+				"url": "http://rest.lillydoo.com:8080/api/account/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Account",
+			"request": {
+				"url": "http://rest.lillydoo.com:8080/api/account",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "tiago",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "gomes",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "tiagosilvagomes85@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "geomster",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "birthday",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "salt",
+							"value": "123",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,4 @@
+parameters:
+  locale: 'en'
+  redis.host: '%env(REDIS_HOST)%'
+  redis.port: '%env(REDIS_PORT)%'

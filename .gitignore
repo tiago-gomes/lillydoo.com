@@ -1,0 +1,12 @@
+/.env
+.idea/
+/public/bundles/
+/var/
+/vendor/
+/docker/data/*
+/docker/log/*
+/docker/rabbitMQ/*
+/docker/web/*
+.phpunit
+phpunit.xml
+xdebug.log

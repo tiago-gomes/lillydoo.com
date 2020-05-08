@@ -1,0 +1,3 @@
+framework:
+    test: ~
+    csrf_protection: false
