@@ -3,7 +3,7 @@
 namespace App\Domain\Service\Contract;
 
 use Symfony\Component\HttpFoundation\Request;
-use App\Domain\Entity\Account;
+use App\Domain\Entity\Address;
 
 interface AuthServiceInterface
 {
@@ -15,13 +15,13 @@ interface AuthServiceInterface
 
     /**
      * @param Request $request
-     * @return Account|null
+     * @return Address|null
      */
-    public function register(Request $request): ?Account;
+    public function register(Request $request): ?Address;
 
     /**
      * @param Request $request
-     * @return Account|null
+     * @return Address|null
      */
-    public function recovery(Request $request): ?Account;
+    public function recovery(Request $request): ?Address;
 }

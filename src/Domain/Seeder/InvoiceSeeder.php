@@ -3,8 +3,8 @@ namespace App\Domain\Seeder;
 
 use App\Domain\Entity\Customer;
 use App\Domain\Model\Repository\Contract\CustomerRepositoryInterface;
-use App\Domain\Entity\Account;
-use App\Domain\Model\Repository\Contract\AccountRepositoryInterface;
+use App\Domain\Entity\Address;
+use App\Domain\Model\Repository\Contract\AddressRepositoryInterface;
 use App\Domain\Entity\Company;
 use App\Domain\Model\Repository\Contract\CompanyRepositoryInterface;
 use App\Domain\Entity\Invoice;
@@ -43,7 +43,7 @@ class InvoiceSeeder
     try{
       $faker = Faker\Factory::create();
       for($i=0;$i<=1;$i++) {
-        $account = new Account([
+        $account = new Address([
           'firstName' => $faker->name,
           'lastName' => $faker->lastName,
           'userName' => $faker->userName,
@@ -52,7 +52,7 @@ class InvoiceSeeder
           'salt' => $faker->randomNumber(4),
           'role' => 'user'
         ]);
-        $newAccount = $this->container->get(AccountRepositoryInterface::class)->create($account);
+        $newAccount = $this->container->get(AddressRepositoryInterface::class)->create($account);
         $company = new Company([
           'name' => $faker->domainName,
           'email' => $faker->email,

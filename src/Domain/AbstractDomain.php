@@ -3,7 +3,7 @@
 namespace App\Domain;
 
 use Psr\Container\ContainerInterface;
-use App\Domain\Model\Repository\Contract\AccountRepositoryInterface;
+use App\Domain\Model\Repository\Contract\AddressRepositoryInterface;
 use App\Domain\Model\Repository\Contract\CompanyRepositoryInterface;
 
 abstract class AbstractDomain
@@ -22,10 +22,10 @@ abstract class AbstractDomain
 
     /**
      * todo: fix this
-     * @return Entity\Account|null
+     * @return Entity\Address|null
      */
     public function getUser() {
-        return $this->container->get(AccountRepositoryInterface::class)->getById(4);
+        return $this->container->get(AddressRepositoryInterface::class)->getById(4);
     }
 
     /**

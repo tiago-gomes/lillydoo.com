@@ -2,15 +2,15 @@
 
 namespace App\Domain\Model\Repository;
 
-use App\Domain\Entity\Account;
+use App\Domain\Entity\Address;
 use App\Domain\Model\Repository\DoctrineAwareInterface;
 use App\Domain\Model\Repository\DoctrineAwareTrait;
-use App\Domain\Model\Repository\Contract\AccountRepositoryInterface;
+use App\Domain\Model\Repository\Contract\AddressRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityManager;
 
 
-class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInterface
+class AddressRepository implements AddressRepositoryInterface, DoctrineAwareInterface
 {
     use DoctrineAwareTrait;
 
@@ -21,18 +21,18 @@ class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInte
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('c')
-            ->from(Account::class, 'c');
+            ->from(Address::class, 'c');
         return $qb->getQuery()->getArrayResult();
     }
 
     /**
      * @inheritdoc
      */
-    public function getById(string $id): ?Account
+    public function getById(string $id): ?Address
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('c')
-            ->from(Account::class, 'c')
+            ->from(Address::class, 'c')
             ->where('c.id = :id')
             ->setMaxResults(1);
 
@@ -44,11 +44,11 @@ class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInte
     /**
      * @inheritdoc
      */
-    public function getByEmail(string $email): ?Account
+    public function getByEmail(string $email): ?Address
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('c')
-            ->from(Account::class, 'c')
+            ->from(Address::class, 'c')
             ->where('c.email = :email')
             ->setMaxResults(1);
 
@@ -60,11 +60,11 @@ class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInte
     /**
      * @inheritdoc
      */
-    public function getByCredentials(string $email, string $password): ?Account
+    public function getByCredentials(string $email, string $password): ?Address
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('c')
-            ->from(Account::class, 'c')
+            ->from(Address::class, 'c')
             ->where('c.email = :email')
             ->andWhere('c.password = :password')
             ->setMaxResults(1);
@@ -78,7 +78,7 @@ class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInte
     /**
      * @inheritdoc
      */
-    public function create(Account $account, $flush = true): ?Account
+    public function create(Address $account, $flush = true): ?Address
     {
         $this->getEntityManager()->persist($account);
 
@@ -92,7 +92,7 @@ class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInte
     /**
      * @inheritdoc
      */
-    public function update(Account $account, $flush = true): ?Account
+    public function update(Address $account, $flush = true): ?Address
     {
 
         $account = $this->getEntityManager()->merge($account);
@@ -107,7 +107,7 @@ class AccountRepository implements AccountRepositoryInterface, DoctrineAwareInte
     /**
      * @inheritdoc
      */
-    public function remove(Account $account, $flush = true): bool
+    public function remove(Address $account, $flush = true): bool
     {
         $this->getEntityManager()->remove($account);
 

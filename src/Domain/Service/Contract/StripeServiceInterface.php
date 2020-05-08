@@ -3,7 +3,7 @@
 namespace App\Domain\Service\Contract;
 
 use Symfony\Component\HttpFoundation\Request;
-use App\Domain\Entity\Account;
+use App\Domain\Entity\Address;
 
 interface StripeServiceInterface
 {

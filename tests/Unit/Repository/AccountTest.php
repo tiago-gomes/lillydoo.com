@@ -2,9 +2,9 @@
 
 namespace App\Domain\Tests\Unit\Repository;
 
-use App\Domain\Entity\Account;
-use App\Domain\Model\Repository\AccountRepository;
-use App\Domain\Model\Repository\Contract\AccountRepositoryInterface;
+use App\Domain\Entity\Address;
+use App\Domain\Model\Repository\AddressRepository;
+use App\Domain\Model\Repository\Contract\AddressRepositoryInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use \Mockery;
@@ -41,8 +41,8 @@ class AccountTest extends WebTestCase
         parent::setUp();
         $client = self::createClient();
         $this->testContainer = $client->getContainer();
-        $this->testContainer->set(AccountRepositoryInterface::class, $this->repositoryMock);
-        $this->repositoryMock = Mockery::mock(AccountRepository::class);
+        $this->testContainer->set(AddressRepositoryInterface::class, $this->repositoryMock);
+        $this->repositoryMock = Mockery::mock(AddressRepository::class);
     }
 
     public function tearDown()
@@ -58,7 +58,7 @@ class AccountTest extends WebTestCase
     public function itShouldCreateAnewAccount($account)
     {
 
-        $mockAccount = Mockery::mock(Account::class);
+        $mockAccount = Mockery::mock(Address::class);
 
         $this->repositoryMock
             ->shouldReceive($this->once())
@@ -67,7 +67,7 @@ class AccountTest extends WebTestCase
 
         static::$kernel
             ->getContainer()
-            ->get(AccountRepositoryInterface::class)->create(new Account($account));
+            ->get(AddressRepositoryInterface::class)->create(new Address($account));
 
 
     }

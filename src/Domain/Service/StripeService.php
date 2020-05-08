@@ -6,7 +6,7 @@ use App\Domain\Service\Contract\StripeServiceInterface;
 use App\Domain\AbstractDomain;
 use Omnipay\Omnipay;
 use App\Domain\Entity\CreditCard;
-use App\Domain\Model\AccountModel;
+use App\Domain\Model\AddressModel;
 use App\Domain\Model\InvoiceModel;
 use App\Domain\Model\CompanyModel;
 use App\Domain\Model\CustomerModel;
@@ -17,7 +17,7 @@ class StripeService extends AbstractDomain implements StripeServiceInterface
     const GATEWAY_NAME = 'Stripe';
 
     /**
-     * @var AccountModel
+     * @var AddressModel
      */
     protected $accountModel;
 
@@ -38,16 +38,16 @@ class StripeService extends AbstractDomain implements StripeServiceInterface
 
     /**
      * StripeService constructor.
-     * @param AccountModel $accountModel
+     * @param AddressModel $accountModel
      * @param InvoiceModel $invoiceModel
      * @param CompanyModel $companyModel
      * @param CustomerModel $customerModel
      */
     public function __construct(
-        AccountModel $accountModel,
-        InvoiceModel $invoiceModel,
-        CompanyModel $companyModel,
-        CustomerModel $customerModel
+      AddressModel $accountModel,
+      InvoiceModel $invoiceModel,
+      CompanyModel $companyModel,
+      CustomerModel $customerModel
     )
     {
         $this->accountModel = $accountModel;

@@ -2,7 +2,7 @@
 
 namespace App\Core\Library\Jwt;
 
-use App\Domain\Entity\Account;
+use App\Domain\Entity\Address;
 use Symfony\Component\HttpFoundation\File\File;
 
 class JwtPayload
@@ -43,7 +43,7 @@ class JwtPayload
     protected $iss;
 
     /**
-     * @var Account
+     * @var Address
      */
     private $user;
 
@@ -57,10 +57,10 @@ class JwtPayload
 
     /**
      * JwtPayload constructor.
-     * @param Account $account
+     * @param Address $account
      * @throws \Exception
      */
-    public function __construct(Account $account)
+    public function __construct(Address $account)
     {
         $this->jti = base64_encode(random_bytes(32));
         $this->iat = time();
