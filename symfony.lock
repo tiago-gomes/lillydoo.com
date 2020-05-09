@@ -2,9 +2,6 @@
     "behat/gherkin": {
         "version": "v4.5.1"
     },
-    "clue/stream-filter": {
-        "version": "v1.4.0"
-    },
     "codeception/codeception": {
         "version": "2.3",
         "recipe": {
@@ -92,9 +89,6 @@
     "facebook/webdriver": {
         "version": "1.6.0"
     },
-    "firebase/php-jwt": {
-        "version": "v5.0.0"
-    },
     "fzaninotto/faker": {
         "version": "v1.8.0"
     },
@@ -113,14 +107,8 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-    "league/omnipay": {
-        "version": "v3.0.1"
-    },
     "mockery/mockery": {
         "version": "1.1.0"
-    },
-    "moneyphp/money": {
-        "version": "v3.1.3"
     },
     "myclabs/deep-copy": {
         "version": "1.8.1"
@@ -134,47 +122,11 @@
     "ocramius/proxy-manager": {
         "version": "2.2.1"
     },
-    "omnipay/common": {
-        "version": "v3.0.2"
-    },
-    "omnipay/stripe": {
-        "version": "v3.0.1"
-    },
     "phar-io/manifest": {
         "version": "1.0.3"
     },
     "phar-io/version": {
         "version": "2.0.1"
-    },
-    "php-amqplib/php-amqplib": {
-        "version": "v2.7.2"
-    },
-    "php-amqplib/rabbitmq-bundle": {
-        "version": "1.12",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.12",
-            "ref": "ce3ca2e4577270c4f518539aa6b9e878998fcfef"
-        }
-    },
-    "php-http/discovery": {
-        "version": "1.4.0"
-    },
-    "php-http/guzzle6-adapter": {
-        "version": "v1.1.1"
-    },
-    "php-http/httplug": {
-        "version": "v1.1.0"
-    },
-    "php-http/message": {
-        "version": "1.7.0"
-    },
-    "php-http/message-factory": {
-        "version": "v1.0.2"
-    },
-    "php-http/promise": {
-        "version": "v1.0.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -229,6 +181,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
@@ -353,9 +308,6 @@
             "ref": "f11dfa18618a8a5dd853ea3a302db2e0557e031c"
         }
     },
-    "symfony/panther": {
-        "version": "v0.1.0"
-    },
     "symfony/phpunit-bridge": {
         "version": "4.1",
         "recipe": {
@@ -364,6 +316,9 @@
             "version": "4.1",
             "ref": "1a47f76dcd9d5d4da1fab54fb15450bae3704c5e"
         }
+    },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.16.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.9.0"
@@ -451,9 +406,6 @@
     },
     "theseer/tokenizer": {
         "version": "1.1.0"
-    },
-    "twbs/bootstrap": {
-        "version": "v4.3.1"
     },
     "twig/twig": {
         "version": "v2.5.0"
