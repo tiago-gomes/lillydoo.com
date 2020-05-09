@@ -14,7 +14,6 @@
         "nesbot/carbon": "^2.1",
         "phpunit/phpunit": "^7.3",
         "predis/predis": "^1.1",
-        "spatie/image-optimizer": "^1.1",
         "symfony/cache": "*",
         "symfony/console": "*",
         "symfony/flex": "^1.1",
